@@ -1,4 +1,4 @@
-package com.lvr.retrofitclient.client;
+package com.dingcl.netexception.app;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

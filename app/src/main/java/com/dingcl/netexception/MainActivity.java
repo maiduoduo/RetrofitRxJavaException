@@ -1,4 +1,4 @@
-package com.lvr.retrofitclient;
+package com.dingcl.netexception;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,13 +6,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.lvr.retrofitclient.client.BaseObserver;
-import com.lvr.retrofitclient.client.ExceptionHandle;
-import com.lvr.retrofitclient.client.RetrofitClient;
+import com.dingcl.netexception.app.BaseObserver;
+import com.dingcl.netexception.app.ExceptionHandle;
+import com.dingcl.netexception.app.RetrofitClient;
+import com.dingcl.netexception.bean.IpResult;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 网络错误演示
+ *      2020.02.18
+ */
 public class MainActivity extends AppCompatActivity {
     private View btn_get, btn_post;
     String url1 = "http://img0.imgtn.bdimg.com/it/u=205441424,1768829584&fm=21&gp=0.jpg";
@@ -34,28 +39,20 @@ public class MainActivity extends AppCompatActivity {
                 //"http://ip.taobao.com/service/getIpInfo.php?ip=21.22.11.33";
                 RetrofitClient.getInstance(MainActivity.this).createBaseApi().get("service/getIpInfo.php"
                         , maps, new BaseObserver<IpResult>(MainActivity.this) {
-
-
                             @Override
                             protected void hideDialog() {
-
                             }
-
                             @Override
                             protected void showDialog() {
-
                             }
-
                             @Override
                             public void onError(ExceptionHandle.ResponeThrowable e) {
                                 Log.e("Exception", e.getMessage());
-                                Toast.makeText(MainActivity.this, "网络异常", Toast.LENGTH_LONG).show();
+                                Toast.makeText(MainActivity.this, e.getMessage()+"", Toast.LENGTH_LONG).show();
 
                             }
-
                             @Override
                             public void onNext(IpResult responseBody) {
-
                                 Toast.makeText(MainActivity.this, responseBody.toString(), Toast.LENGTH_LONG).show();
                             }
                         });
@@ -79,20 +76,17 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, result.toString(), Toast.LENGTH_LONG).show();
 
                             }
-
                             @Override
                             protected void hideDialog() {
-
                             }
 
                             @Override
                             protected void showDialog() {
-
                             }
 
                             @Override
                             public void onError(ExceptionHandle.ResponeThrowable e) {
-                                Log.e("Lyk", e.getMessage());
+                                Log.e("Exception", e.getMessage());
                                 if(e.code==1002){
                                     Toast.makeText(MainActivity.this, "网络异常", Toast.LENGTH_LONG).show();
                                 }

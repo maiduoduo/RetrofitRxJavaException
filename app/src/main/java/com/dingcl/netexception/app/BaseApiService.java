@@ -1,6 +1,6 @@
-package com.lvr.retrofitclient.client;
+package com.dingcl.netexception.app;
 
-import com.lvr.retrofitclient.IpResult;
+import com.dingcl.netexception.bean.IpResult;
 
 import java.util.Map;
 
@@ -17,7 +17,11 @@ import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 
-
+/**
+ * BaseApiService
+ *  2020.02.18
+ * @param <T>
+ */
 public interface BaseApiService<T> {
 
     public static final String Base_URL = "http://ip.taobao.com/";

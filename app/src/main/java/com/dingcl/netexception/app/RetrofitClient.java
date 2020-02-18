@@ -1,4 +1,4 @@
-package com.lvr.retrofitclient.client;
+package com.dingcl.netexception.app;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -28,8 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * RetrofitClient
- * Created by Tamic on 2016-06-15.
- * {@link # https://github.com/NeglectedByBoss/RetrofitClient}
+ * {@link # https://github.com/maiduoduo/RetrofitRxJavaException}
  */
 public class RetrofitClient {
 
@@ -92,7 +91,6 @@ public class RetrofitClient {
     }
 
     private RetrofitClient(Context context) {
-
         this(context, baseUrl, null);
     }
 

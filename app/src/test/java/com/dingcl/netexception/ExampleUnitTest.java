@@ -1,4 +1,4 @@
-package com.lvr.retrofitclient;
+package com.dingcl.netexception;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.lvr.retrofitclient.client;
+package com.dingcl.netexception.app;
 
 import android.content.Context;
 import android.util.Log;
@@ -15,10 +15,10 @@ public abstract class BaseObserver<T> implements Observer<T> {
     }
     @Override
     public void onError(Throwable e) {
-        Log.e("lvr", e.getMessage());
+        Log.e("Exception", e.getMessage());
         // todo error somthing
-
         if(e instanceof ExceptionHandle.ResponeThrowable){
+            Log.e("Exception", e.getMessage());
             onError((ExceptionHandle.ResponeThrowable)e);
         } else {
             onError(new ExceptionHandle.ResponeThrowable(e, ExceptionHandle.ERROR.UNKNOWN));
@@ -28,7 +28,6 @@ public abstract class BaseObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
         Toast.makeText(context, "建立连接", Toast.LENGTH_SHORT).show();
-
         //可以弹出Dialog 提示正在加载
         showDialog();
 

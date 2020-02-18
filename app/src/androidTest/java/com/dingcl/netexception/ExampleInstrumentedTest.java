@@ -1,4 +1,4 @@
-package com.lvr.retrofitclient;
+package com.dingcl.netexception;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

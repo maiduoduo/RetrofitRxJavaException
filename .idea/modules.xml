@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RetrofitClient.iml" filepath="$PROJECT_DIR$/RetrofitClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RetrofitClientException.iml" filepath="$PROJECT_DIR$/RetrofitClientException.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

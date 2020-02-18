@@ -1,14 +1,17 @@
-package com.lvr.retrofitclient.client;
+package com.dingcl.netexception.app;
 
 import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonSyntaxException;
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 
 import org.apache.http.conn.ConnectTimeoutException;
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.net.ConnectException;
+import java.net.UnknownHostException;
 
 
 public class ExceptionHandle {
@@ -55,6 +58,22 @@ public class ExceptionHandle {
         } else if (e instanceof ConnectException) {
             ex = new ResponeThrowable(e, ERROR.NETWORD_ERROR);
             ex.message = "连接失败";
+            return ex;
+        } else if (e instanceof UnknownHostException) {
+            ex = new ResponeThrowable(e, ERROR.UNKOWN_HOST);
+            ex.message = "未知主机异常";
+            return ex;
+        } else if (e instanceof IOException) {
+            ex = new ResponeThrowable(e, ERROR.IO_ERROR);
+            ex.message = "I/O异常";
+            return ex;
+        } else if (e instanceof JsonSyntaxException) {
+            ex = new ResponeThrowable(e, ERROR.JsonSyntax_ERROR);
+            ex.message = "Json解析异常";
+            return ex;
+        } else if (e instanceof IllegalStateException) {
+            ex = new ResponeThrowable(e, ERROR.IllegalState_ERROR);
+            ex.message = "IllegalStateException";
             return ex;
         } else if (e instanceof javax.net.ssl.SSLHandshakeException) {
             ex = new ResponeThrowable(e, ERROR.SSL_ERROR);
@@ -107,6 +126,23 @@ public class ExceptionHandle {
          * 连接超时
          */
         public static final int TIMEOUT_ERROR = 1006;
+        /**
+         * 未知主机异常
+         */
+        public static final int UNKOWN_HOST = 1007;
+        /**
+         * I/O异常
+         */
+        public static final int IO_ERROR = 1008;
+        /**
+         * Json解析异常
+         */
+        public static final int JsonSyntax_ERROR = 1009;
+
+        /**
+         * IllegalStateException
+         */
+        public static final int IllegalState_ERROR = 1010;
     }
 
     public static class ResponeThrowable extends Exception {
@@ -117,6 +153,15 @@ public class ExceptionHandle {
             super(throwable);
             this.code = code;
 
+        }
+
+        @Override
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
         }
     }
 
