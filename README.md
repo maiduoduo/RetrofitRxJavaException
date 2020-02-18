@@ -1,2 +1,2 @@
-# RetrofitRxJavaBox
-Retrofit+RxJava网络请求的封装
+# RetrofitRxJavaException
+Retrofit+RxJava网络请求的封装及异常用以处理
